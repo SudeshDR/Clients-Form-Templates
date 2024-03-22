@@ -8,141 +8,184 @@
     <link rel="icon" href="103194804.png" type="image/x-icon">
     <link rel="shortcut icon" href="103194804.png" type="image/x-icon">
     <style>
-        /* Reset default styles */
-        .row{
-            display: grid;
-        }
-        * {
-            margin: 0;
-            padding: 0;
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+        *,
+        *:after,
+        *:before {
             box-sizing: border-box;
         }
 
-        /* Set background color for the form */
-        form {
-            background: #021725;
+        body {
+            font-family: "DM Sans", sans-serif;
+            line-height: 1.5;
+            background-color: #f1f3fb;
+            padding: 0 2rem;
         }
 
-        /* Style input, textarea, select, option */
-        input[type="text"],
-        textarea,
-        select,
-        option {
-            background: none !important;
-            border: 1px solid #FFCC33 !important;
-            border-radius: 2px !important;
-            color: #FFCC33 !important;
-            padding: 10px;
-            margin-bottom: 10px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        /* Style select dropdown arrow */
-        select {
-            appearance: none;
-            -webkit-appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg fill='%23FFCC33' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 10.828l3.586-3.586a1 1 0 0 1 1.414 1.414l-4.586 4.586a1 1 0 0 1-1.414 0L2 8.656a1 1 0 1 1 1.414-1.414L8 10.828zM8 1a1 1 0 0 1 1 1v9.172a1 1 0 0 1-1.707.707L4.354 9.854a1 1 0 0 1 0-1.414l4.94-4.94A1 1 0 0 1 8 1z'%3E%3C/path%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 10px top 50%;
-            background-size: 16px auto;
-            padding-right: 30px;
-        }
-
-        /* Style label */
-        label {
-            color: #FFCC33;
-            margin-bottom: 5px;
+        img {
+            max-width: 100%;
             display: block;
         }
 
-        /* Style textarea */
-        textarea {
-            min-height: 100px;
+
+        input {
+            appearance: none;
+            border-radius: 0;
         }
 
-        /* Style button */
-        .button {
-            background-color: #FFCC33;
-            color: #021725;
-            border: none;
-            border-radius: 2px;
-            padding: 10px 20px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        /* On hover, darken the button */
-        .button:hover {
-            background-color: #e5b029;
-        }
-
-        /* Full width button */
-        .expand {
+        .card {
+            margin: 2rem auto;
+            display: flex;
+            flex-direction: column;
             width: 100%;
+            max-width: 425px;
+            background-color: #FFF;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px 0 rgba(#999, .25);
+            padding: .75rem;
+        }
+
+        .card-image {
+            border-radius: 8px;
+            overflow: hidden;
+            padding-bottom: 65%;
+            background-image: url('https://assets.codepen.io/285131/coffee_1.jpg');
+            background-repeat: no-repeat;
+            background-size: 150%;
+            background-position: 0 5%;
+            position: relative;
+        }
+
+        .card-heading {
+            position: absolute;
+            left: 10%;
+            top: 15%;
+            right: 10%;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #735400;
+            line-height: 1.222;
+
+            small {
+                display: block;
+                font-size: .75em;
+                font-weight: 400;
+                margin-top: .25em;
+            }
+        }
+
+        .card-form {
+            padding: 2rem 1rem 0;
+        }
+
+        .input {
+            display: flex;
+            flex-direction: column-reverse;
+            position: relative;
+            padding-top: 1.5rem;
+
+            &+.input {
+                margin-top: 1.5rem;
+            }
+        }
+
+        .input-label {
+            color: #8597a3;
+            position: absolute;
+            top: 1.5rem;
+            transition: .25s ease;
+        }
+
+        .input-field {
+            border: 0;
+            z-index: 1;
+            background-color: transparent;
+            border-bottom: 2px solid #eee;
+            font: inherit;
+            font-size: 1.125rem;
+            padding: .25rem 0;
+
+            &:focus,
+            &:valid {
+                outline: 0;
+                border-bottom-color: #6658d3;
+
+                &+.input-label {
+                    color: #6658d3;
+                    transform: translateY(-1.5rem);
+                }
+            }
+        }
+
+        .action {
+            margin-top: 2rem;
+        }
+
+        .action-button {
+            font: inherit;
+            font-size: 1.25rem;
+            padding: 1em;
+            width: 100%;
+            font-weight: 500;
+            background-color: #6658d3;
+            border-radius: 6px;
+            color: #FFF;
+            border: 0;
+
+            &:focus {
+                outline: 0;
+            }
+        }
+
+        .card-info {
+            padding: 1rem 1rem;
+            text-align: center;
+            font-size: .875rem;
+            color: #8597a3;
+
+            a {
+                display: block;
+                color: #6658d3;
+                text-decoration: none;
+            }
         }
     </style>
 </head>
 
 <body>
-    <form>
-        <div class="row">
-            <div class="small-6 small-centered columns">
-                <div class="row">
-                    <div class="small-6 columns">
-                        <input type="text" placeholder="Name" autocomplete="off" />
-                    </div>
-                    <div class="small-6 columns">
-                        <input type="text" placeholder="Surname" autocomplete="off" />
-                    </div>
+    <div class="container">
+        <!-- code here -->
+        <div class="card">
+            <div class="card-image">
+                <h2 class="card-heading">
+                    Get started
+                    <small>Let us create your account</small>
+                </h2>
+            </div>
+            <form class="card-form">
+                <div class="input">
+                    <input type="text" class="input-field" required />
+                    <label class="input-label">Full name</label>
                 </div>
-                <div class="row">
-                    <div class="small-12 columns">
-                        <input type="text" placeholder="Company name" autocomplete="off" />
-                    </div>
+                <div class="input">
+                    <input type="text" class="input-field"  required />
+                    <label class="input-label">Email</label>
                 </div>
-                <div class="row">
-                    <div class="small-6 columns">
-                        <input type="text" placeholder="Email" autocomplete="off" />
-                    </div>
-                    <div class="small-6 columns">
-                        <input type="text" placeholder="Telephone" autocomplete="off" />
-                    </div>
+                <div class="input">
+                    <input type="password" class="input-field" required />
+                    <label class="input-label">Password</label>
                 </div>
-                <div class="row">
-                    <div class="small-8 columns">
-                        <input type="text" placeholder="Address" autocomplete="off" />
-                    </div>
-                    <div class="small-4 columns">
-                        <input type="text" placeholder="City" autocomplete="off" />
-                    </div>
+                <div class="action">
+                    <button class="action-button">Get started</button>
                 </div>
-                <div class="row">
-                    <div class="large-12 columns">
-                        <label>What do you need?
-                            <select>
-                                <option value="presentation">Presentation website</option>
-                                <option value="portfolio">Portfolio</option>
-                                <option value="app">Web or Mobile application</option>
-                                <option value="store">Online shop</option>
-                            </select>
-                        </label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="small-12 columns">
-                        <textarea placeholder="Comment"></textarea>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="small-4 columns">
-                        <a href="#" class="button expand">Send</a>
-                    </div>
-                </div>
+            </form>
+            <div class="card-info">
+                <p>By signing up you are agreeing to our <a href="#">Terms and Conditions</a></p>
             </div>
         </div>
-    </form>
+    </div>
+
 </body>
 
 </html>
